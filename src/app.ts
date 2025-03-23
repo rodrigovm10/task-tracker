@@ -1,9 +1,8 @@
-import { Server } from './presentation/server'
-
+import { CLI } from './presentation/cli'
 ;(() => {
   main()
 })()
 
 function main() {
-  Server.start()
+  CLI.start()
 }
