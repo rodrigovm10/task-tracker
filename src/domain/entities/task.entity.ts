@@ -1,23 +1,17 @@
-import { ID } from '../objects/id/id'
+import { ID, Description, Status } from '../value-objects'
 
 interface TaskEntityOptions {
   id: ID
-  description: string
-  status: TaskStatus
+  description: Description
+  status: Status
   createdAt: Date
   updatedAt: Date
 }
 
-export enum TaskStatus {
-  TODO = 'todo',
-  IN_PROGRESS = 'in_progress',
-  DONE = 'done',
-}
-
 export class Task {
   public id: ID
-  public description: string
-  public status: TaskStatus
+  public description: Description
+  public status: Status
   public createdAt: Date
   public updatedAt: Date
 

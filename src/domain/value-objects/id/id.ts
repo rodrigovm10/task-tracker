@@ -28,7 +28,7 @@ export class ID {
       throw new Error('ID cannot be zero')
     }
 
-    if (!this.isNumber) {
+    if (!this.isNumber()) {
       throw new Error('ID must be a integer')
     }
   }
