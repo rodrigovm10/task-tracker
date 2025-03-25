@@ -16,7 +16,7 @@ export class TaskRepositoryImpl implements TaskRepository {
   update(id: ID, entity: UpdateTask): Task {
     return this.taskDatasource.update(id, entity)
   }
-  delete(id: ID): void {
+  delete(id: ID): Task {
     return this.taskDatasource.delete(id)
   }
 }

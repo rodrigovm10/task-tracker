@@ -6,5 +6,5 @@ export abstract class TaskDatasource {
   abstract findAll(filter?: TaskStatus): Task[]
   abstract save(entity: CreateTask): Task
   abstract update(id: ID, entity: UpdateTask): Task
-  abstract delete(id: ID): void
+  abstract delete(id: ID): Task
 }

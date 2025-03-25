@@ -1,9 +1,9 @@
 import fs from 'node:fs'
-import { Task } from '../../domain/entities/task.entity'
-import { TaskDatasource } from '../../domain/datasources/task.datasource'
-import { TaskStatus, CreateTask, UpdateTask } from '../../domain/interfaces/task.interface'
 import { ID } from '../../domain/value-objects'
+import { Task } from '../../domain/entities/task.entity'
 import { CustomError } from '../../domain/exceptions/custom.error'
+import { TaskDatasource } from '../../domain/datasources/task.datasource'
+import { TaskStatus, UpdateTask } from '../../domain/interfaces/task.interface'
 
 export class FileSystemDatasourceImpl implements TaskDatasource {
   private readonly path = 'tasks'
@@ -28,15 +28,14 @@ export class FileSystemDatasourceImpl implements TaskDatasource {
 
   private writeFile(task: Task[]): void {
     const taskObjectToString = JSON.stringify(task, null, 2)
+
     fs.writeFileSync(this.filePath, taskObjectToString, 'utf-8')
   }
 
   private getTasksFromFile(): Task[] {
     const tasks = fs.readFileSync(this.filePath, 'utf-8')
 
-    if (tasks.length === 0) return []
-
-    return JSON.parse(tasks)
+    return tasks.length > 0 ? JSON.parse(tasks) : []
   }
 
   findAll(filter?: TaskStatus): Task[] {
@@ -52,8 +51,11 @@ export class FileSystemDatasourceImpl implements TaskDatasource {
 
   save(task: Task): Task {
     const allTasks = this.getTasksFromFile()
+
     allTasks.push(task)
+
     this.writeFile(allTasks)
+
     return task
   }
 
@@ -69,29 +71,27 @@ export class FileSystemDatasourceImpl implements TaskDatasource {
       throw CustomError.notFound('The task to update does not exists.')
     }
 
-    if (description) {
-      taskExists.description = description
+    if (description) taskExists.description = description
 
-      this.writeFile([...allTasks])
-    }
+    if (status) taskExists.status = status
 
-    if (status) {
-      taskExists.status = status
-
-      this.writeFile([...allTasks])
-    }
-
+    this.writeFile([...allTasks])
     return taskExists
   }
-  delete(id: ID): void {
+
+  delete(id: ID): Task {
     const allTasks = this.getTasksFromFile()
 
     const taskExists = allTasks.find(task => task.id === id.id)
 
-    if (taskExists) {
-      allTasks.filter(task => task.id !== id.id)
+    if (!taskExists) {
+      throw CustomError.notFound('The task to delete does not exists.')
     }
 
-    fs.writeFileSync(this.filePath, JSON.stringify(allTasks), 'utf-8')
+    const newTasks = allTasks.filter(task => task.id !== id.id)
+
+    this.writeFile(newTasks)
+
+    return taskExists
   }
 }

@@ -6,5 +6,5 @@ export abstract class TaskRepository {
   abstract findAll(filter?: TaskStatus): Task[]
   abstract save(task: Task): Task
   abstract update(id: ID, task: UpdateTask): Task
-  abstract delete(id: ID): void
+  abstract delete(id: ID): Task
 }

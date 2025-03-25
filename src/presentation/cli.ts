@@ -1,11 +1,12 @@
+import { ID } from '../domain/value-objects'
+import { LogError } from '../domain/logger/logger'
 import { AddTask, FindAll } from '../application/use-cases'
 import { TaskStatus } from '../domain/interfaces/task.interface'
 import { TaskRepositoryImpl } from '../infrastructure/repositories/task.repository.impl'
+import { CustomError } from '../domain/exceptions/custom.error'
 import { FileSystemDatasourceImpl } from '../infrastructure/datasources/file-system.datasouce.impl'
 import { UpdateTask } from '../application/use-cases/update-task.use-case'
-import { ID } from '../domain/value-objects'
-import { CustomError } from '../domain/exceptions/custom.error'
-import { LogError } from '../domain/logger/logger'
+import { DeleteTask } from '../application/use-cases/delete-task.use-case'
 
 const taskDatasource = new FileSystemDatasourceImpl()
 const taskRepository = new TaskRepositoryImpl(taskDatasource)
@@ -23,6 +24,7 @@ export class CLI {
           new UpdateTask(taskRepository).execute(new ID(Number(args[1])), { description: args[2] })
           break
         case 'delete':
+          new DeleteTask(taskRepository).execute(new ID(Number(args[1])))
           break
         case 'mark-in-progress':
           new UpdateTask(taskRepository).execute(new ID(Number(args[1])), {
