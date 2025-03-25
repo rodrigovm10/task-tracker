@@ -3,6 +3,7 @@ import { Task } from '../../domain/entities/task.entity'
 import { TaskDatasource } from '../../domain/datasources/task.datasource'
 import { TaskStatus, CreateTask, UpdateTask } from '../../domain/interfaces/task.interface'
 import { ID } from '../../domain/value-objects'
+import { CustomError } from '../../domain/exceptions/custom.error'
 
 export class FileSystemDatasourceImpl implements TaskDatasource {
   private readonly path = 'tasks'
@@ -56,11 +57,31 @@ export class FileSystemDatasourceImpl implements TaskDatasource {
     return task
   }
 
-  update(id: ID, entity: UpdateTask): Task {
-    // const allTasks = this.getAll()
-    // const taskToUpdate = allTasks.fin
-    // const
-    throw new Error('Method not implemented')
+  update(id: ID, updateTask: UpdateTask): Task {
+    const { description, status } = updateTask
+    const { id: idValue } = id
+
+    const allTasks = this.getTasksFromFile()
+
+    const taskExists = allTasks.find(task => task.id === idValue)
+
+    if (!taskExists) {
+      throw CustomError.notFound('The task to update does not exists.')
+    }
+
+    if (description) {
+      taskExists.description = description
+
+      this.writeFile([...allTasks])
+    }
+
+    if (status) {
+      taskExists.status = status
+
+      this.writeFile([...allTasks])
+    }
+
+    return taskExists
   }
   delete(id: ID): void {
     const allTasks = this.getTasksFromFile()

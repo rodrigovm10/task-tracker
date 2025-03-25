@@ -5,6 +5,6 @@ import { CreateTask, TaskStatus, UpdateTask } from '../interfaces/task.interface
 export abstract class TaskRepository {
   abstract findAll(filter?: TaskStatus): Task[]
   abstract save(task: Task): Task
-  abstract update(id: ID, task: Task): Task
+  abstract update(id: ID, task: UpdateTask): Task
   abstract delete(id: ID): void
 }

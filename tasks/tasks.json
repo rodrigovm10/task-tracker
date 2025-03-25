@@ -1,16 +1,9 @@
 [
   {
     "id": 1,
-    "description": "Nueva",
-    "status": "todo",
-    "createdAt": "2025-03-25T00:39:19.898Z",
-    "updatedAt": "2025-03-25T00:39:19.898Z"
-  },
-  {
-    "id": 2,
-    "description": "Nueva 2",
-    "status": "todo",
-    "createdAt": "2025-03-25T00:39:26.162Z",
-    "updatedAt": "2025-03-25T00:39:26.162Z"
+    "description": "Prueba Update",
+    "status": "done",
+    "createdAt": "2025-03-25T01:45:13.330Z",
+    "updatedAt": "2025-03-25T01:45:13.330Z"
   }
 ]

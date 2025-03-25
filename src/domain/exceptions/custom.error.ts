@@ -16,4 +16,8 @@ export class CustomError extends Error {
   static wrongType(message: string) {
     return new CustomError(message, 'WrongType')
   }
+
+  static notFound(message: string) {
+    return new CustomError(message, 'NotFound')
+  }
 }
