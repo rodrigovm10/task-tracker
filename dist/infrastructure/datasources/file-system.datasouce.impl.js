@@ -56,6 +56,7 @@ class FileSystemDatasourceImpl {
             taskExists.description = description;
         if (status)
             taskExists.status = status;
+        taskExists.updatedAt = new Date();
         this.writeFile([...allTasks]);
         return taskExists;
     }

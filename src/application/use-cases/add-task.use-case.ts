@@ -1,3 +1,4 @@
+import { DatePlugin } from '../../config/date.plugin'
 import { LogError } from '../../domain/logger/logger'
 import { Task } from '../../domain/entities/task.entity'
 import { CustomError } from '../../domain/exceptions/custom.error'
@@ -23,8 +24,8 @@ export class AddTask implements AddTaskUseCase {
         id: new ID(id).id,
         description: new Description(description).description,
         status: new Status(TaskStatus.TODO).status,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: new DatePlugin().getDate(),
+        updatedAt: new DatePlugin().getDate(),
       }
 
       this.taskRepository.save(newTask)

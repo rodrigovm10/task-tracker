@@ -1,9 +1,58 @@
 [
   {
+    "id": 1,
+    "description": "Buy groceries and cook dinner",
+    "status": "todo",
+    "createdAt": "2025-03-25T04:54:04.824Z",
+    "updatedAt": "2025-03-25T04:55:02.071Z"
+  },
+  {
     "id": 2,
-    "description": "hola",
-    "status": "done",
-    "createdAt": "2025-03-25T03:49:57.663Z",
-    "updatedAt": "2025-03-25T03:49:57.663Z"
+    "description": "Nueva1",
+    "status": "todo",
+    "createdAt": "2025-03-25T04:54:15.512Z",
+    "updatedAt": "2025-03-25T04:54:15.512Z"
+  },
+  {
+    "id": 3,
+    "description": "another new task description",
+    "status": "todo",
+    "createdAt": "2025-03-25T04:55:46.148Z",
+    "updatedAt": "2025-03-25T04:55:46.148Z"
+  },
+  {
+    "id": 4,
+    "description": "Nueva3",
+    "status": "todo",
+    "createdAt": null,
+    "updatedAt": "2025-03-25T05:00:33.299Z"
+  },
+  {
+    "id": 5,
+    "description": "Nueva3",
+    "status": "todo",
+    "createdAt": "lunes, 24 de marzo de 2025, 23:01:25",
+    "updatedAt": "lunes, 24 de marzo de 2025, 23:01:25"
+  },
+  {
+    "id": 6,
+    "description": "Nueva3",
+    "status": "todo",
+    "createdAt": "Mon, Mar 24, 2025, 11:06:12 PM",
+    "updatedAt": "Mon, Mar 24, 2025, 11:06:12 PM"
+  },
+  {
+    "id": 7,
+    "description": "Nueva3",
+    "status": "todo",
+    "createdAt": "M, 3/24/2025, 11:07:47 PM",
+    "updatedAt": "M, 3/24/2025, 11:07:47 PM"
+  },
+  {
+    "id": 8,
+    "description": "Buy groceries and cook dinner",
+    "status": "todo",
+    "createdAt": "3/24/2025, 11:08:02 PM",
+    "updatedAt": "3/24/2025, 11:10:50 PM"
   }
 ]

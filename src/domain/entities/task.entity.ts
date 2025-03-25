@@ -4,16 +4,16 @@ interface TaskEntityOptions {
   id: number
   description: string
   status: TaskStatus
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
 }
 
 export class Task {
   public id: number
   public description: string
   public status: TaskStatus
-  public createdAt: Date
-  public updatedAt: Date
+  public createdAt: string
+  public updatedAt: string
 
   constructor(options: TaskEntityOptions) {
     const { id, description, status, createdAt, updatedAt } = options

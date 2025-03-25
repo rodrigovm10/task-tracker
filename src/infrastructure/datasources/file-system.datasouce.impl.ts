@@ -4,6 +4,7 @@ import { Task } from '../../domain/entities/task.entity'
 import { CustomError } from '../../domain/exceptions/custom.error'
 import { TaskDatasource } from '../../domain/datasources/task.datasource'
 import { TaskStatus, UpdateTask } from '../../domain/interfaces/task.interface'
+import { DatePlugin } from '../../config/date.plugin'
 
 export class FileSystemDatasourceImpl implements TaskDatasource {
   private readonly path = 'tasks'
@@ -75,6 +76,7 @@ export class FileSystemDatasourceImpl implements TaskDatasource {
 
     if (status) taskExists.status = status
 
+    taskExists.updatedAt = new DatePlugin().getDate()
     this.writeFile([...allTasks])
     return taskExists
   }
