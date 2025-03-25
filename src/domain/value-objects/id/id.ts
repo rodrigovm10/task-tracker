@@ -1,3 +1,5 @@
+import { CustomError } from '../../exceptions/custom.error'
+
 export class ID {
   public id: number
 
@@ -17,19 +19,19 @@ export class ID {
 
   validate() {
     if (!this.isNotEmpty()) {
-      throw new Error('ID cannot be empty')
+      throw CustomError.valueEmpty('ID cannot be empty')
     }
 
     if (this.id < 0) {
-      throw new Error('ID cannot be negative')
+      throw CustomError.validationError('ID cannot be negative')
     }
 
     if (this.id === 0) {
-      throw new Error('ID cannot be zero')
+      throw CustomError.validationError('ID cannot be zero')
     }
 
     if (!this.isNumber()) {
-      throw new Error('ID must be a integer')
+      throw CustomError.validationError('ID must be a integer')
     }
   }
 }

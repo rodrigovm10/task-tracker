@@ -1,10 +1,10 @@
-import { Task, TaskStatus } from '../entities/task.entity'
 import { ID } from '../value-objects/id/id'
+import { Task } from '../entities/task.entity'
+import { CreateTask, TaskStatus, UpdateTask } from '../interfaces/task.interface'
 
 export abstract class TaskRepository {
-  abstract findAll(): Promise<Task[]>
-  abstract findByStatus(status: TaskStatus): Promise<Task[]>
-  abstract save(task: Task): Promise<Task[]>
-  abstract update(id: ID): Promise<Task[]>
-  abstract delete(task: Task): Promise<Task[]>
+  abstract findAll(filter?: TaskStatus): Task[]
+  abstract save(task: Task): Task
+  abstract update(id: ID, task: Task): Task
+  abstract delete(id: ID): void
 }

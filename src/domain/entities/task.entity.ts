@@ -1,17 +1,17 @@
-import { ID, Description, Status } from '../value-objects'
+import { TaskStatus } from '../interfaces/task.interface'
 
 interface TaskEntityOptions {
-  id: ID
-  description: Description
-  status: Status
+  id: number
+  description: string
+  status: TaskStatus
   createdAt: Date
   updatedAt: Date
 }
 
 export class Task {
-  public id: ID
-  public description: Description
-  public status: Status
+  public id: number
+  public description: string
+  public status: TaskStatus
   public createdAt: Date
   public updatedAt: Date
 

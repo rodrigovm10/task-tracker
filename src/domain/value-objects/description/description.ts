@@ -1,3 +1,5 @@
+import { CustomError } from '../../exceptions/custom.error'
+
 export class Description {
   public description: string
 
@@ -17,11 +19,11 @@ export class Description {
 
   validate() {
     if (!this.isString) {
-      throw new Error('Description must be string')
+      throw CustomError.validationError('Description must be string')
     }
 
     if (this.isEmpty()) {
-      throw new Error('Description cannot be empty')
+      throw CustomError.valueEmpty('Description cannot be empty')
     }
   }
 }

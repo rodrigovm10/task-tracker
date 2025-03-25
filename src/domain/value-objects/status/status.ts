@@ -1,4 +1,5 @@
-import { TaskStatus } from '../../interfaces/task'
+import { CustomError } from '../../exceptions/custom.error'
+import { TaskStatus } from '../../interfaces/task.interface'
 
 export class Status {
   public status: TaskStatus
@@ -15,7 +16,7 @@ export class Status {
 
   validate() {
     if (!this.isValidStatus()) {
-      console.error(`Status only must be ${Object.values(TaskStatus).join(', ')}`)
+      throw CustomError.wrongType(`Status only must be ${Object.values(TaskStatus).join(', ')}`)
     }
   }
 }
