@@ -1,9 +1,7 @@
-import { AddTask } from '../application/use-cases/add-task.use-case'
-import { TaskDatasource } from '../domain/datasources/task.datasource'
+import { AddTask, FindAll } from '../application/use-cases'
 import { TaskStatus } from '../domain/interfaces/task.interface'
-import { ID } from '../domain/value-objects'
-import { FileSystemDatasourceImpl } from '../infrastructure/datasources/file-system.datasouce.impl'
 import { TaskRepositoryImpl } from '../infrastructure/repositories/task.repository.impl'
+import { FileSystemDatasourceImpl } from '../infrastructure/datasources/file-system.datasouce.impl'
 
 const taskDatasource = new FileSystemDatasourceImpl()
 const taskRepository = new TaskRepositoryImpl(taskDatasource)
@@ -25,7 +23,7 @@ export class CLI {
       case 'mark-done':
         break
       case 'list':
-        taskDatasource.findAll(args[1] as unknown as TaskStatus)
+        new FindAll(taskRepository).execute(args[1] as TaskStatus)
         break
     }
   }

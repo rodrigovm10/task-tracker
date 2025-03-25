@@ -18,7 +18,7 @@ export class AddTask implements AddTaskUseCase {
       const id = allTasks ? allTasks.length + 1 : 1
 
       const { description } = task
-      console.log(allTasks)
+
       const newTask: Task = {
         id: new ID(id).id,
         description: new Description(description).description,
