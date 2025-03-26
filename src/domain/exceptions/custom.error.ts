@@ -3,7 +3,6 @@ export class CustomError extends Error {
     super(message)
 
     this.name = name
-    Error.captureStackTrace(this)
   }
 
   static validationError(message: string) {

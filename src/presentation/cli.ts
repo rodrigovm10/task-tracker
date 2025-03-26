@@ -4,7 +4,7 @@ import { AddTask, FindAll } from '../application/use-cases'
 import { TaskStatus } from '../domain/interfaces/task.interface'
 import { TaskRepositoryImpl } from '../infrastructure/repositories/task.repository.impl'
 import { CustomError } from '../domain/exceptions/custom.error'
-import { FileSystemDatasourceImpl } from '../infrastructure/datasources/file-system.datasouce.impl'
+import { FileSystemDatasourceImpl } from '../infrastructure/datasources/file-system.datasource'
 import { UpdateTask } from '../application/use-cases/update-task.use-case'
 import { DeleteTask } from '../application/use-cases/delete-task.use-case'
 

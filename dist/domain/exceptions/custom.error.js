@@ -5,7 +5,6 @@ class CustomError extends Error {
     constructor(message, name) {
         super(message);
         this.name = name;
-        Error.captureStackTrace(this);
     }
     static validationError(message) {
         return new CustomError(message, 'ValidationError');

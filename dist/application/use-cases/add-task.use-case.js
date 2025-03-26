@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddTask = void 0;
+const date_plugin_1 = require("../../config/date.plugin");
 const logger_1 = require("../../domain/logger/logger");
 const custom_error_1 = require("../../domain/exceptions/custom.error");
 const value_objects_1 = require("../../domain/value-objects");
@@ -18,8 +19,8 @@ class AddTask {
                 id: new value_objects_1.ID(id).id,
                 description: new value_objects_1.Description(description).description,
                 status: new value_objects_1.Status(task_interface_1.TaskStatus.TODO).status,
-                createdAt: new Date(),
-                updatedAt: new Date(),
+                createdAt: new date_plugin_1.DatePlugin().getDate(),
+                updatedAt: new date_plugin_1.DatePlugin().getDate(),
             };
             this.taskRepository.save(newTask);
             console.log(`Task added successfully (ID: ${newTask.id})`);

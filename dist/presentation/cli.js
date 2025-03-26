@@ -7,10 +7,10 @@ const use_cases_1 = require("../application/use-cases");
 const task_interface_1 = require("../domain/interfaces/task.interface");
 const task_repository_impl_1 = require("../infrastructure/repositories/task.repository.impl");
 const custom_error_1 = require("../domain/exceptions/custom.error");
-const file_system_datasouce_impl_1 = require("../infrastructure/datasources/file-system.datasouce.impl");
+const file_system_datasource_1 = require("../infrastructure/datasources/file-system.datasource");
 const update_task_use_case_1 = require("../application/use-cases/update-task.use-case");
 const delete_task_use_case_1 = require("../application/use-cases/delete-task.use-case");
-const taskDatasource = new file_system_datasouce_impl_1.FileSystemDatasourceImpl();
+const taskDatasource = new file_system_datasource_1.FileSystemDatasourceImpl();
 const taskRepository = new task_repository_impl_1.TaskRepositoryImpl(taskDatasource);
 class CLI {
     static start() {
