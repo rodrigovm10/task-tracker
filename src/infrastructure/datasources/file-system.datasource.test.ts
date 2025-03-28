@@ -20,6 +20,10 @@ describe('FileSystemDatasource', () => {
     fs.rmSync(taskPath, { recursive: true, force: true })
   })
 
+  afterAll(() => {
+    fs.rmSync(taskPath, { recursive: true, force: true })
+  })
+
   test('should create task file if it does not exists', () => {
     new FileSystemDatasourceImpl()
 
