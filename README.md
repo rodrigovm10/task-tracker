@@ -19,20 +19,25 @@ Project Url: [Task Tracker Cli](https://roadmap.sh/projects/task-tracker)
 
 1. Clone the repository
 
-```bash
+```
 https://github.com/rodrigovm10/task-tracker.git
 cd task-tracker
 ```
 
 2. Install node_modules
 
-```bash
+```
 npm i
 ```
 
-3. Link the package
+3. Build the project
+```
+npm run build
+```
 
-```bash
+4. Link the package
+
+```
 npm link
 ```
 
@@ -83,8 +88,20 @@ task-cli update 1
 task-cli delete 1
 ```
 
-- List task by done status
+- Mark task status in progress.
 
 ```
-task-cli delete 1
+task-cli mark-in-progress 1
+```
+
+- Mark task status in todo.
+
+```
+task-cli mark-done 1
+```
+
+- Mark task status in done
+
+```
+task-cli mark-done 1
 ```
